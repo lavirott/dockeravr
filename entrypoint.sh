@@ -1,9 +1,6 @@
 #!/bin/sh
 
-PATH=/opt/simulide/bin:$PATH
-
-echo "Starting SimulIDE with simu=${simu} and hex=${hex}"
-
-simulide --simu /tmp/file.simu --hex /tmp/file.hex --platform offscreen
-
-
+PATH=/opt/simulide/SimulIDE_0.3.11/bin:$PATH
+# echo "Starting SimulIDE with simu=${simu} and hex=${hex}"
+cd /tmp
+simulide --simu file.simu --hex file.hex --platform offscreen
