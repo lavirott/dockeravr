@@ -15,6 +15,7 @@ RUN # Build source
 ARG SIMULIDE_VERSION=0.3.11
 #RUN wget "https://www.patreon.com/file?h=25271918&i=3426828" -O SimulIDE_${SIMULIDE_VERSION}.tgz
 #RUN tar xzvf SimulIDE_${SIMULIDE_VERSION}.tgz
+ADD https://api.github.com/repos/Sebastien-Posca/simulide-CLI/git/ref/heads/master version.json
 RUN git clone https://github.com/Sebastien-Posca/simulide-CLI.git
 WORKDIR /tmp/simulide-CLI/simulide-master/build_XX
 RUN qmake
