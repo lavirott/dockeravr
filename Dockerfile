@@ -12,16 +12,16 @@ RUN apt -y install git build-essential
 RUN apt -y install qt5-default qttools5-dev-tools libqt5svg5-dev libqt5serialport5-dev qtscript5-dev qtmultimedia5-dev libelf-dev 
 
 RUN # Build source
-ARG SIMULIDE_VERSION=0.3.11
+ARG SIMULIDE_VERSION=0.3.12-SR8
 #RUN wget "https://www.patreon.com/file?h=25271918&i=3426828" -O SimulIDE_${SIMULIDE_VERSION}.tgz
 #RUN tar xzvf SimulIDE_${SIMULIDE_VERSION}.tgz
-ADD https://api.github.com/repos/Sebastien-Posca/simulide-CLI/git/ref/heads/master version.json
-RUN git clone https://github.com/Sebastien-Posca/simulide-CLI.git
-WORKDIR /tmp/simulide-CLI/simulide-master/build_XX
+ADD https://api.github.com/repos/lavirott/simulide-cli/git/refs/heads/master version.json
+RUN git clone https://github.com/lavirott/simulide-cli.git
+WORKDIR /tmp/simulide-cli/build_XX
 RUN qmake
 RUN make -j$(nproc)
 RUN mkdir /simulide
-RUN cp -ar /tmp/simulide-CLI/simulide-master/build_XX/release/SimulIDE_${SIMULIDE_VERSION} /simulide
+RUN cp -ar /tmp/simulide-cli/build_XX/release/SimulIDE_${SIMULIDE_VERSION} /simulide
 
 
 ###
