@@ -1,14 +1,16 @@
-USERNAME=enactproject
+ACCOUNT=enactproject
 NAME=dockeravr
-RELEASE=latest
+TAG=latest
+
+DOCKERHUB_USERNAME=genesisenact
 
 all: build publish
 
 build: Dockerfile
-	docker build -t $(USERNAME)/$(NAME):$(RELEASE) $<
+	docker build -t $(ACCOUNT)/$(NAME):$(TAG) $<
 
 login:
-	docker login --username genesisenact
+	docker login --username $(DOCKERHUB_USERNAME)
 
 publish:
-	docker push $(USERNAME)/$(NAME):$(RELEASE)
+	docker push $(ACCOUNT)/$(NAME):$(TAG)
